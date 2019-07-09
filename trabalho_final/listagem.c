@@ -36,17 +36,17 @@ void listagem(void){
     char dir[100];
     int opcao=0,i,j,k;
     while(strcmp(dir,"fim")){
-        printf("Digite o diretório com o nome do arquivo a ser consultado:\n");
-        printf("ou digite 'fim' para retornar ao menu principal.\n");
+        printf("Digite o diretório com o nome do arquivo a ser consultado\n");
+        printf("ou digite 'fim' para retornar ao menu principal:\n");
         printf("-> ");
-        scanf("%[^\n]s",&dir);
+        scanf(" %[^\n]s",dir);
         getchar();
         FILE *f = fopen(dir,"rb");
         while (!f && strcmp(dir,"fim")){
             printf("Erro ao tentar abrir arquivo!\n");
             printf("Digite um diretуrio de arquivo vбlido ou digite 'fim' para sair do mуdulo: \n");
             printf("-> ");
-            scanf("%[^\n]s",&dir);
+            scanf(" %[^\n]s",dir);
             getchar();
             f = fopen(dir,"rb");
         }
@@ -83,7 +83,6 @@ void listagem(void){
                     printlista(aluno,i);
                 }
                 if (opcao==2){
-                    char temp[80];
                     for(j=0;j<i;j++){
                         for(k=j+1;k<i;k++){
                             if(strcmp(aluno[j].nome,aluno[k].nome)>0){

@@ -19,9 +19,9 @@ void cadastro(void){
     struct Alunos aluno;
     char dir[100];
     printf("Digite o diretório com o nome do arquivo a ser gravado\n");
-    printf("ou digite 'fim' para retornar ao menu principal.\n");
+    printf("ou digite 'fim' para retornar ao menu principal:\n");
     printf("-> ");
-    scanf("%[^\n]s",&dir);
+    scanf(" %[^\n]s",dir);
     if(strcmp(dir,"fim")){
         f = fopen(dir,"ab");
         while(1){
@@ -31,7 +31,7 @@ void cadastro(void){
             if(aluno.matricula==0)
                 break;
             printf("Digite o nome do aluno: ");
-            scanf("%[^\n]s",&aluno.nome);
+            scanf(" %[^\n]s",aluno.nome);
             for(i=0; i<6; i++){
                 printf("Digite a nota da prova %d do aluno: ",i+1);
                 scanf("%f",&aluno.nprova[i]);

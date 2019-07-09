@@ -19,16 +19,16 @@ void consulta(void){
     int matbusca,busca,i,j;
     while(strcmp(dir,"fim")){
         printf("Digite o diretório do arquivo a ser consultado\n");
-        printf("ou digite 'fim' para retornar ao menu principal.\n");
+        printf("ou digite 'fim' para retornar ao menu principal:\n");
         printf("-> ");
-        scanf("%[^\n]s",&dir);
+        scanf(" %[^\n]s",dir);
         getchar();
         FILE *f = fopen(dir,"rb");
         while (!f && strcmp(dir,"fim")){
             printf("Erro ao tentar abrir arquivo!\n");
             printf("Digite um diretório de arquivo válido ou digite 'fim' para sair do módulo: \n");
             printf("-> ");
-            scanf("%[^\n]s",&dir);
+            scanf(" %[^\n]s",dir);
             getchar();
             f = fopen(dir,"rb");
         }

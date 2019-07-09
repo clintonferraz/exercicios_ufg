@@ -18,17 +18,17 @@ void alteracao(void){
     char dir[100];
     int matbusca,busca,i,j,opcao;
     while(strcmp(dir,"fim")){
-        printf("Digite o diretório com o nome do arquivo a ser alterado:\n");
-        printf("ou digite 'fim' para retornar ao menu principal.\n");
+        printf("Digite o diretório com o nome do arquivo a ser alterado\n");
+        printf("ou digite 'fim' para retornar ao menu principal:\n");
         printf("-> ");
-        scanf("%[^\n]s",&dir);
+        scanf(" %[^\n]s",dir);
         getchar();
         FILE *f = fopen(dir,"rb");
         while (!f && strcmp(dir,"fim")){
             printf("Erro ao tentar abrir arquivo!\n");
             printf("Digite um diretório de arquivo válido ou digite 'fim' para sair do módulo: \n");
             printf("-> ");
-            scanf("%[^\n]s",&dir);
+            scanf(" %[^\n]s",dir);
             getchar();
             f = fopen(dir,"rb");
         }
@@ -84,13 +84,14 @@ void alteracao(void){
                     printf("3 - para alterar as notas de lista de exercicio;\n");
                     printf("4 - para alterar a nota de trabalho;\n");
                     printf("5 - para alterar a quantidade de faltas.\n");
+                    printf("6 - para voltar e consultar outro aluno.\n");
                     printf("-> ");
                     scanf("%d",&opcao);
                     getchar();
                     switch (opcao){
                         case 1:
                             printf("Digite um novo nome para o aluno: ");
-                            scanf("%[^\n]s",&aluno[busca].nome);
+                            scanf(" %[^\n]s",aluno[busca].nome);
                             getchar();
                         break;
                         case 2:
@@ -134,7 +135,8 @@ void alteracao(void){
                     fwrite(aluno,sizeof(struct Alunos),i,f);
                     fclose(f);
                     printf("\n");
-                    printf("Aluno alterado com sucesso!\n");
+                    if(opcao==1 || opcao==2 || opcao==3 || opcao==4 || opcao==5)
+                        printf("Aluno alterado com sucesso!\n");
                 }
             }
             //free(aluno);
