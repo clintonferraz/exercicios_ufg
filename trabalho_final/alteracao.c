@@ -119,6 +119,7 @@ void alteracao(void){
                             getchar();
                         break;
                     }
+
                     aluno[busca].mediaprovas = (aluno[busca].nprova[0]+aluno[busca].nprova[1]+aluno[busca].nprova[2]+aluno[busca].nprova[3]+aluno[busca].nprova[4]+aluno[busca].nprova[5])/6;
                     aluno[busca].medialistas = (aluno[busca].nlexercicio[0]+aluno[busca].nlexercicio[1]+aluno[busca].nlexercicio[2]+aluno[busca].nlexercicio[3]+aluno[busca].nlexercicio[4]+aluno[busca].nlexercicio[5])/6;
                     aluno[busca].nfinal = (aluno[busca].mediaprovas*0.8 + aluno[busca].medialistas*0.1 + aluno[busca].ntrabalho*0.1);

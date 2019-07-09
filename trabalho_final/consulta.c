@@ -68,7 +68,7 @@ void consulta(void){
                 if(busca!=-1){
                     printf("\n");
                     printf("-----------------------------------------------------------\n");
-                    printf("Matrнcula: %d\n",aluno[busca].matricula);
+                    printf("Matrícula: %d\n",aluno[busca].matricula);
                     printf("Nome: %s\n",aluno[busca].nome);
                     printf("Notas de prova: %.2f %.2f %.2f %.2f %.2f %.2f\n",aluno[busca].nprova[0],aluno[busca].nprova[1],aluno[busca].nprova[2],aluno[busca].nprova[3],aluno[busca].nprova[4],aluno[busca].nprova[5]);
                     printf("Notas de listas de exercнcio: %.2f %.2f %.2f %.2f %.2f %.2f\n",aluno[busca].nlexercicio[0],aluno[busca].nlexercicio[1],aluno[busca].nlexercicio[2],aluno[busca].nlexercicio[3],aluno[busca].nlexercicio[4],aluno[busca].nlexercicio[5]);
