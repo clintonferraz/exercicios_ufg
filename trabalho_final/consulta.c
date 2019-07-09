@@ -24,7 +24,7 @@ void consulta(void){
         scanf(" %[^\n]s",dir);
         getchar();
         FILE *f = fopen(dir,"rb");
-        while (!f && strcmp(dir,"fim")){
+        while (!f && strcmp(dir,"fim")){ //Loop para quando o usuário digitar um diretório de arquivo inválido
             printf("Erro ao tentar abrir arquivo!\n");
             printf("Digite um diretório de arquivo válido ou digite 'fim' para sair do módulo: \n");
             printf("-> ");
@@ -33,11 +33,11 @@ void consulta(void){
             f = fopen(dir,"rb");
         }
         if(f){
-            aluno = (struct Alunos *)malloc(sizeof(struct Alunos));
+            aluno = (struct Alunos *)malloc(sizeof(struct Alunos));//Aloca na memória espaço para guardar 1 estrutura do tipo aluno
             i=0;
-            while(fread(&aluno[i],sizeof(struct Alunos),1,f)){
+            while(fread(&aluno[i],sizeof(struct Alunos),1,f)){//Enquanto houver registros para ler no arquivo
                 i++;
-                aluno = (struct Alunos *) realloc( aluno, (i+1)*sizeof(struct Alunos) );
+                aluno = (struct Alunos *) realloc( aluno, (i+1)*sizeof(struct Alunos) );//Aumenta o espaço alocado da memoria conforme mais registros vão sendo lidos no arquivo
             }
             matbusca=-1;
             while(matbusca!=0){

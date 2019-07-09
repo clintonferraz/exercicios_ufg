@@ -11,16 +11,14 @@ void cadastro(),consulta(),alteracao(),listagem();
 
 int main(void){
     int opcao;
+    setlocale(LC_ALL,"Portuguese"); //Possibilita utilização de caracteres da lingua portuguesa
     while(opcao!=5){
         #ifdef OS_Windows
-            /* Codigo Windows */
-            system("cls");
+            system("cls");//Comando de limpar a tela, caso o sistema operacional detectado seja windows
         #else
-            /* Codigo GNU/Linux */
-            system("clear");
+            system("clear");//Comando de limpar a tela, caso o sistema operacional detectado seja GNU/Linux
         #endif
 
-        setlocale(LC_ALL,"Portuguese");
         printf("[======== MENU PRINCIPAL ========]\n");
         printf("| Digite:                        |\n");
         printf("| 1 - Cadastrar uma turma;       |\n");

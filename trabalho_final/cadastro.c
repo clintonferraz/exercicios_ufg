@@ -22,8 +22,19 @@ void cadastro(void){
     printf("ou digite 'fim' para retornar ao menu principal:\n");
     printf("-> ");
     scanf(" %[^\n]s",dir);
-    if(strcmp(dir,"fim")){
+    if(strcmp(dir,"fim")) //Gravar arquivo somente se o nome digitado for diferente de "fim"
         f = fopen(dir,"ab");
+    while (!f && strcmp(dir,"fim")){ //Loop para quando o usuário digitar um diretório de arquivo inválido
+        printf("Erro ao tentar gravar arquivo! Talvez não tenha permissão?\n");
+        printf("Digite um diretório de arquivo válido ou digite 'fim' para sair do módulo: \n");
+        printf("-> ");
+        scanf(" %[^\n]s",dir);
+        getchar();
+        if(strcmp(dir,"fim"))
+            f = fopen(dir,"ab");
+    }
+    if(strcmp(dir,"fim")){
+
         while(1){
             printf("Digite a matrícula do novo aluno, ou digite 0 para sair: ");
             scanf("%d",&aluno.matricula);

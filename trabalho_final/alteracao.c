@@ -24,7 +24,7 @@ void alteracao(void){
         scanf(" %[^\n]s",dir);
         getchar();
         FILE *f = fopen(dir,"rb");
-        while (!f && strcmp(dir,"fim")){
+        while (!f && strcmp(dir,"fim")){ //Loop para quando o usuário digitar um diretório de arquivo inválido
             printf("Erro ao tentar abrir arquivo!\n");
             printf("Digite um diretório de arquivo válido ou digite 'fim' para sair do módulo: \n");
             printf("-> ");
@@ -33,11 +33,11 @@ void alteracao(void){
             f = fopen(dir,"rb");
         }
         if(f){
-            aluno = (struct Alunos *)malloc(sizeof(struct Alunos));
+            aluno = (struct Alunos *)malloc(sizeof(struct Alunos));//Aloca na memória espaço para guardar 1 estrutura do tipo aluno
             i=0;
-            while(fread(&aluno[i],sizeof(struct Alunos),1,f)){
+            while(fread(&aluno[i],sizeof(struct Alunos),1,f)){//Enquanto houver registros para ler no arquivo
                 i++;
-                aluno = (struct Alunos *) realloc( aluno, (i+1)*sizeof(struct Alunos) );
+                aluno = (struct Alunos *) realloc( aluno, (i+1)*sizeof(struct Alunos) );//Aumenta o espaço alocado da memoria conforme mais registros vão sendo lidos no arquivo
             }
             matbusca=-1;
             while(matbusca!=0){
@@ -48,12 +48,12 @@ void alteracao(void){
                 getchar();
                 busca=-1;
                 for(j=0; j<i; j++){
-                    if(aluno[j].matricula==matbusca){
+                    if(aluno[j].matricula==matbusca){//Quando encontra o aluno com matricula digitada, salva o índice desse aluno na variavel 'busca'
                         busca=j;
                         break;
                     }
                 }
-                while(busca==-1 && matbusca!=0){
+                while(busca==-1 && matbusca!=0){//Loop para quando o programa não encontra um aluno no arquivo com a matricula digitada
                     printf("Aluno não encontrado!\n");
                     printf("Digite uma matrícula válida ou digite '0' para sair e abrir outro arquivo:\n");
                     printf("-> ");
@@ -65,9 +65,9 @@ void alteracao(void){
                         }
                     }
                 }
-                if(busca!=-1){
+                if(busca!=-1){//Ou seja, quando o programa tiver encontrado uma matricula igual à digitado e houver um índice salvo em busca
                     printf("\n");
-                    printf("-----------------------------------------------------------\n");
+                    printf("-----------------------------------------------------------\n"); //Printa os dados so aluno encontrado
                     printf("Matricula: %d\n",aluno[busca].matricula);
                     printf("Nome: %s\n",aluno[busca].nome);
                     printf("Notas de prova: %.2f %.2f %.2f %.2f %.2f %.2f\n",aluno[busca].nprova[0],aluno[busca].nprova[1],aluno[busca].nprova[2],aluno[busca].nprova[3],aluno[busca].nprova[4],aluno[busca].nprova[5]);
@@ -131,15 +131,15 @@ void alteracao(void){
                         strcpy(aluno[busca].situacao,"Reprovado por ausencia");
                     else
                         strcpy(aluno[busca].situacao,"Reprovado por ausencia e por nota");
-                    f = fopen(dir,"wb");
-                    fwrite(aluno,sizeof(struct Alunos),i,f);
+                    f = fopen(dir,"wb"); //abre o arquivo com o parametro "wb" que sobrescreve o arquivo original
+                    fwrite(aluno,sizeof(struct Alunos),i,f);//salva novamente todo o struct no arquivo
                     fclose(f);
                     printf("\n");
                     if(opcao==1 || opcao==2 || opcao==3 || opcao==4 || opcao==5)
                         printf("Aluno alterado com sucesso!\n");
                 }
             }
-            //free(aluno);
+
 
 
         }

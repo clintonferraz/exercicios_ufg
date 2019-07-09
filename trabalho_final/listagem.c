@@ -13,7 +13,7 @@ struct Alunos {
     char situacao[40];
 };
 
-void printlista(struct Alunos *aluno, int cont){
+void printlista(struct Alunos *aluno, int cont){ //Função que vai ser chamada para a exibição da lista consultada
     int i;
     printf("\n");
     for(i=0; i<cont; i++){
@@ -42,20 +42,20 @@ void listagem(void){
         scanf(" %[^\n]s",dir);
         getchar();
         FILE *f = fopen(dir,"rb");
-        while (!f && strcmp(dir,"fim")){
+        while (!f && strcmp(dir,"fim")){ //Loop para quando o usuário digitar um diretório de arquivo inválido
             printf("Erro ao tentar abrir arquivo!\n");
-            printf("Digite um diretуrio de arquivo vбlido ou digite 'fim' para sair do mуdulo: \n");
+            printf("Digite um diretório de arquivo válido ou digite 'fim' para sair do módulo: \n");
             printf("-> ");
             scanf(" %[^\n]s",dir);
             getchar();
             f = fopen(dir,"rb");
         }
         if(f){
-            aluno = (struct Alunos *)malloc(sizeof(struct Alunos));
+            aluno = (struct Alunos *)malloc(sizeof(struct Alunos));//Aloca na memória espaço para guardar 1 estrutura do tipo aluno
             i=0;
-            while(fread(&aluno[i],sizeof(struct Alunos),1,f)){
+            while(fread(&aluno[i],sizeof(struct Alunos),1,f)){//Enquanto houver registros para ler no arquivo
                 i++;
-                aluno = (struct Alunos *) realloc( aluno, (i+1)*sizeof(struct Alunos) );
+                aluno = (struct Alunos *) realloc( aluno, (i+1)*sizeof(struct Alunos) );//Aumenta o espaço alocado da memoria conforme mais registros vão sendo lidos no arquivo
             }
             opcao=0;
             while(opcao!=4){
@@ -70,7 +70,7 @@ void listagem(void){
                 getchar();
 
                 if (opcao==1){
-                    for(j = 1; j < i; j++){
+                    for(j = 1; j < i; j++){ //insertion sort que organiza o struct por ordem crescente de matrícula
                         k = j;
                         while(k > 0 && aluno[k-1].matricula > aluno[k].matricula){
                             aux = aluno[k-1];
@@ -83,7 +83,7 @@ void listagem(void){
                     printlista(aluno,i);
                 }
                 if (opcao==2){
-                    for(j=0;j<i;j++){
+                    for(j=0;j<i;j++){ //organiza o struct por ordem alfabetica de nome
                         for(k=j+1;k<i;k++){
                             if(strcmp(aluno[j].nome,aluno[k].nome)>0){
                             aux = aluno[j];
@@ -95,7 +95,7 @@ void listagem(void){
                     printlista(aluno,i);
                 }
                 if (opcao==3){
-                    for(j = 1; j < i; j++){
+                    for(j = 1; j < i; j++){ //insertion sort que organiza o struct por ordem crescente de nota final
                         k = j;
                         while(k > 0 && aluno[k-1].nfinal > aluno[k].nfinal){
                             aux = aluno[k-1];
