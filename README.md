@@ -1,2 +1,2 @@
-# introducao_a_programacao
-Exercícios da matéria de Introdução à Programação
+# Exercícios do curso de SI
+
