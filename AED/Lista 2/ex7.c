@@ -1,25 +1,45 @@
 #include<stdio.h>
 
 int main(void){
-    int m,n,i,j,k=0,nf;
-    scanf("%d %d",&m,&n);
-    nf=n;
-    printf("nf=%d",nf);
-    int p[n][2];  
-    for(i=0;i<n;i++){
-        scanf("%d %d",&p[i][1],&p[i][2]);
+    int n,m;
+    int i,j=0,k,l,rep=0;
+
+    scanf("%d %d",&n,&m);
+    int mat[m][2],vet[n];
+
+    for(i=0;i<m;i++){
+        scanf("%d %d",&mat[i][0],&mat[i][1]);
     }
-    for(i=1;i<=m;i++){
-        for(j=0;j<n;j++){
-            if(i == p[j][1] || i == p[j][2]){
-                    k++;  
-            }                           
-        }
-        nf=nf-(k-1);
-        if(nf<1)
-            nf=1;  
-        k=0;        
+    vet[0]=mat[0][0];
+    for(l=0; l<=j; l++){
+        for(i=0; i<=m; i++){
+            if(mat[i][0]==vet[j]){
+                for(k=0; k<=j; k++){
+                    if(mat[i][1]=vet[k])
+                        rep=1;
+                }
+                if(!rep){
+                    j++;
+                    vet[j]=mat[i][1];
+                }else
+                    rep=0;
+            }else if(mat[i][1]==vet[j]){
+                for(k=0; k<=j; k++){
+                    if(mat[i][0]=vet[k])
+                        rep=1;
+                }
+                if(!rep){
+                    j++;
+                    vet[j]=mat[i][0];
+                }else
+                    rep=0;
+            }                                
+        }    
     }
-    printf("%d",nf);
+
+
+    for(i=0; i<=j; i++){
+        printf("%d\n",vet[i]);
+    }
     return 0;
 }
