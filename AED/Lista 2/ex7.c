@@ -13,22 +13,22 @@ int main(void){
     vet[0]=mat[0][0];
     for(l=0; l<=j; l++){
         for(i=0; i<=m; i++){
-            if(mat[i][0]==vet[j]){
+            if(mat[i][0]==vet[l]){
                 for(k=0; k<=j; k++){
-                    if(mat[i][1]=vet[k])
+                    if(mat[i][1]==vet[k])
                         rep=1;
                 }
-                if(!rep){
+                if(rep==0){
                     j++;
                     vet[j]=mat[i][1];
                 }else
                     rep=0;
-            }else if(mat[i][1]==vet[j]){
+            }else if(mat[i][1]==vet[l]){
                 for(k=0; k<=j; k++){
-                    if(mat[i][0]=vet[k])
+                    if(mat[i][0]==vet[k])
                         rep=1;
                 }
-                if(!rep){
+                if(rep==0){
                     j++;
                     vet[j]=mat[i][0];
                 }else
