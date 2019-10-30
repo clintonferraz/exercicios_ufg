@@ -1,1 +1,1 @@
-# Exercícios do curso de SI
+# Exercícios de SI
